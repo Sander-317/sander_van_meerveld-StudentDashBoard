@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, setState } from "react";
 import App from "./App";
 import { testData } from "./assets/testdata";
 import data from "./assets/data";
@@ -11,6 +11,7 @@ export default class Container extends Component {
       test: "state works",
 
       studentList: [],
+      ListAllStudentAverage: [],
     };
     this.makeListOfAverage = this.makeListOfAverage.bind(this);
     this.epicStudentListMaker = this.epicStudentListMaker.bind(this);
@@ -19,19 +20,16 @@ export default class Container extends Component {
   }
 
   studentListMaker() {
-    const studentArray = data.map((student) => student.name);
+    const studentArray = this.state.data.map((student) => student.name);
     const studentList = [...new Set(studentArray)];
-    // console.log(studentList);
     return studentList;
   }
 
   makeListAssignments() {
-    const firstStudentName = this.state.data[0].name;
-    // console.log(firstStudentName);
-    const oneStudent = this.state.data.filter(
-      (student) => student.name === firstStudentName
+    const assignmentArray = this.state.data.map(
+      (assignment) => assignment.assignment
     );
-    const assignmentList = oneStudent.map((student) => student.assignment);
+    const assignmentList = [...new Set(assignmentArray)];
     return assignmentList;
   }
   epicStudentListMaker() {
@@ -47,7 +45,10 @@ export default class Container extends Component {
       };
     });
     // console.log(epicStudentList);
-    return epicStudentList;
+    const newState = this.state;
+    // console.log(newState);
+    newState.studentList = epicStudentList;
+    // return epicStudentList;
   }
 
   makeListOfAverage() {
@@ -75,13 +76,16 @@ export default class Container extends Component {
         averageFun: averageFun,
       });
     });
-    // console.log(newArray);
-    return newArray;
+    const newState = this.state;
+    newState.ListAllStudentAverage = newArray;
+    // return newArray;
   }
 
   render() {
     return (
       <div>
+        {this.epicStudentListMaker()}
+        {this.makeListOfAverage()}
         {/* {console.log(this.studentListMaker())} */}
         {/* {console.log(this.epicStudentListMaker())} */}
         <App

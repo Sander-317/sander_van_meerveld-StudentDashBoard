@@ -53,7 +53,7 @@ import { Line } from "react-chartjs-2";
 //   ],
 // };
 
-export default function LineChart({ state, makeListOfAverage }) {
+export default function LineChart({ state }) {
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -84,7 +84,7 @@ export default function LineChart({ state, makeListOfAverage }) {
       },
     },
   };
-  const newArray = makeListOfAverage();
+  const newArray = state.ListAllStudentAverage;
   const labels = newArray.map((assignment) => assignment.assignment);
   // console.log("in line chart", labels);
   // console.log(newArray);

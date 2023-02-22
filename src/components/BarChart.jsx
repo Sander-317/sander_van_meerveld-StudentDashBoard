@@ -57,7 +57,7 @@ ChartJS.register(
 //   ],
 // };
 
-export default function BarChart({ state, makeListOfAverage }) {
+export default function BarChart({ state }) {
   const options = {
     responsive: true,
     plugins: {
@@ -97,7 +97,8 @@ export default function BarChart({ state, makeListOfAverage }) {
   };
 
   // const labels = state.singleStudentData.map((student) => student.assignment);
-  const newArray = makeListOfAverage();
+  const newArray = state.ListAllStudentAverage;
+
   const labels = newArray.map((assignment) => assignment.assignment);
   // console.log(newArray);
   const chartData = {
