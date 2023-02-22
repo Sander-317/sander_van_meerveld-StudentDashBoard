@@ -54,18 +54,18 @@ export default class Container extends Component {
     const assignments = this.makeListAssignments();
     // console.log(assignments);
     const newArray = [];
-    const test = assignments.map((assignment) => {
-      let filteredList = data.filter(
+    assignments.map((assignment) => {
+      const filteredList = this.state.data.filter(
         (student) => student.assignment === assignment
       );
       // console.log(filteredList);
-      let averageDifficulty =
+      const averageDifficulty =
         filteredList.reduce(
           (total, difficulty) => total + difficulty.difficulty,
           0
         ) / filteredList.length;
 
-      let averageFun =
+      const averageFun =
         filteredList.reduce((total, difficulty) => total + difficulty.fun, 0) /
         filteredList.length;
       // console.log(average);
@@ -77,8 +77,6 @@ export default class Container extends Component {
     });
     // console.log(newArray);
     return newArray;
-    //   const average = array => array.reduce((a, b) => a + b) / array.length;
-    // console.log(average([1,2,3,4,5]));
   }
 
   render() {
