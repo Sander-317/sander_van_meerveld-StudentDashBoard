@@ -5,6 +5,7 @@ import LineChart from "./components/LineChart";
 function App({ state }) {
   return (
     <div className="App">
+      {console.log(state.testData)}
       <h1>student dashboard {state.test}</h1>
       <BarChart state={state} />
       <LineChart state={state} />
