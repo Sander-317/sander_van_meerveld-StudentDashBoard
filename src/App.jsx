@@ -2,12 +2,11 @@ import "./App.css";
 import BarChart from "./components/BarChart";
 import LineChart from "./components/LineChart";
 
-function App({ state }) {
+function App({ state, makeListOfAverage }) {
   return (
     <div className="App">
-      {console.log(state.testData)}
       <h1>student dashboard {state.test}</h1>
-      <BarChart state={state} />
+      <BarChart state={state} makeListOfAverage={makeListOfAverage} />
       <LineChart state={state} />
     </div>
   );

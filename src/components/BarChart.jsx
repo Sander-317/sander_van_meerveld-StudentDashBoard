@@ -57,7 +57,7 @@ ChartJS.register(
 //   ],
 // };
 
-export default function BarChart({ state }) {
+export default function BarChart({ state, makeListOfAverage }) {
   const options = {
     responsive: true,
     plugins: {
@@ -71,21 +71,24 @@ export default function BarChart({ state }) {
     },
   };
 
-  const labels = state.singleStudentData.map((student) => student.assignment);
-
+  // const labels = state.singleStudentData.map((student) => student.assignment);
+  const newArray = makeListOfAverage();
+  const labels = newArray.map((assignment) => assignment.assignment);
+  console.log(newArray);
   const chartData = {
     labels,
     datasets: [
       {
         label: "Difficulty",
-        data: state.singleStudentData.map((student) => student.difficulty),
+        data: newArray.map((assignment) => assignment.average * 10),
+        // state.singleStudentData.map((student) => student.difficulty),
         // labels.map(() => Math.floor(Math.random() * 100)),
         backgroundColor: "darkred",
       },
       {
         label: "Fun",
-        data: state.singleStudentData.map((student) => student.fun),
-        // labels.map(() => Math.floor(Math.random() * 100)),
+        data: labels.map(() => Math.floor(Math.random() * 100)),
+        // state.singleStudentData.map((student) => student.fun),
         backgroundColor: "green",
       },
     ],
