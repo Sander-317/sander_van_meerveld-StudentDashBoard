@@ -80,14 +80,15 @@ export default function BarChart({ state, makeListOfAverage }) {
     datasets: [
       {
         label: "Difficulty",
-        data: newArray.map((assignment) => assignment.average * 10),
+        data: newArray.map((assignment) => assignment.averageDifficulty),
         // state.singleStudentData.map((student) => student.difficulty),
         // labels.map(() => Math.floor(Math.random() * 100)),
         backgroundColor: "darkred",
       },
       {
         label: "Fun",
-        data: labels.map(() => Math.floor(Math.random() * 100)),
+        data: newArray.map((assignment) => assignment.averageFun),
+        // labels.map(() => Math.floor(Math.random() * 100)),
         // state.singleStudentData.map((student) => student.fun),
         backgroundColor: "green",
       },

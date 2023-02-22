@@ -61,18 +61,25 @@ export default class Container extends Component {
     const assignments = makeListAssignments();
     const newArray = [];
     const test = assignments.map((assignment) => {
-      let tester = assignment;
       let filteredList = data.filter(
-        (student) => student.assignment === tester
+        (student) => student.assignment === assignment
       );
       // console.log(filteredList);
-      let average =
+      let averageDifficulty =
         filteredList.reduce(
           (total, difficulty) => total + difficulty.difficulty,
           0
         ) / filteredList.length;
+
+      let averageFun =
+        filteredList.reduce((total, difficulty) => total + difficulty.fun, 0) /
+        filteredList.length;
       // console.log(average);
-      return newArray.push({ assignment: assignment, average: average });
+      return newArray.push({
+        assignment: assignment,
+        averageDifficulty: averageDifficulty,
+        averageFun: averageFun,
+      });
     });
     // console.log(newArray);
     return newArray;
