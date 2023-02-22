@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function BarChart() {
-  return <div>BarChart</div>;
+export default function BarChart({ state }) {
+  return <div>BarChart {state.test}</div>;
 }

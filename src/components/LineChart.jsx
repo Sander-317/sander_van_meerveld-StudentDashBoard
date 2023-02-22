@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function LineChart() {
-  return <div>LineChart</div>;
+export default function LineChart({ state }) {
+  return <div>LineChart {state.test}</div>;
 }
