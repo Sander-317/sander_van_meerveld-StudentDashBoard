@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import data from "../assets/data";
 
 ChartJS.register(
   CategoryScale,
@@ -19,39 +20,84 @@ ChartJS.register(
   Legend
 );
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Chart.js Bar Chart",
-    },
-  },
-};
+// const singleStudentData = data.filter((student) => student.name === "Sandra");
+// console.log(singleStudentData);
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
+// const options = {
+//   responsive: true,
+//   plugins: {
+//     legend: {
+//       position: "top",
+//     },
+//     title: {
+//       display: true,
+//       text: "Chart.js Bar Chart",
+//     },
+//   },
+// };
 
-const chartData = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: labels.map(() => Math.floor(Math.random() * 100)),
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-    {
-      label: "Dataset 2",
-      data: labels.map(() => Math.floor(Math.random() * 100)),
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
-    },
-  ],
-};
+// const labels = singleStudentData.map((student) => student.assignment);
+// console.log("labels", labels);
+
+// const chartData = {
+//   labels,
+//   datasets: [
+//     {
+//       label: "Difficulty",
+//       data: singleStudentData.map((student) => student.difficulty),
+//       // labels.map(() => Math.floor(Math.random() * 100)),
+//       backgroundColor: "darkred",
+//     },
+//     {
+//       label: "Fun",
+//       data: singleStudentData.map((student) => student.fun),
+//       // labels.map(() => Math.floor(Math.random() * 100)),
+//       backgroundColor: "green",
+//     },
+//   ],
+// };
 
 export default function BarChart({ state }) {
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: state.test,
+      },
+    },
+  };
+
+  const labels = state.singleStudentData.map((student) => student.assignment);
+
+  const chartData = {
+    labels,
+    datasets: [
+      {
+        label: "Difficulty",
+        data: state.singleStudentData.map((student) => student.difficulty),
+        // labels.map(() => Math.floor(Math.random() * 100)),
+        backgroundColor: "darkred",
+      },
+      {
+        label: "Fun",
+        data: state.singleStudentData.map((student) => student.fun),
+        // labels.map(() => Math.floor(Math.random() * 100)),
+        backgroundColor: "green",
+      },
+    ],
+  };
   return <Bar options={options} data={chartData} />;
+  // (
+  //   <div>
+  //     {state.singleStudentData.map((student) => (
+  //       <div>{student.assignment}</div>
+  //     ))}
+  //   </div>
+  // );
 
   // <div>BarChart {state.test}</div>;
 }
