@@ -74,7 +74,7 @@ export default function BarChart({ state, makeListOfAverage }) {
   // const labels = state.singleStudentData.map((student) => student.assignment);
   const newArray = makeListOfAverage();
   const labels = newArray.map((assignment) => assignment.assignment);
-  console.log(newArray);
+  // console.log(newArray);
   const chartData = {
     labels,
     datasets: [
@@ -83,6 +83,7 @@ export default function BarChart({ state, makeListOfAverage }) {
         data: newArray.map((assignment) => assignment.averageDifficulty),
         // state.singleStudentData.map((student) => student.difficulty),
         // labels.map(() => Math.floor(Math.random() * 100)),
+
         backgroundColor: "darkred",
       },
       {

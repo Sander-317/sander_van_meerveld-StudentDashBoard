@@ -7,7 +7,7 @@ function App({ state, makeListOfAverage }) {
     <div className="App">
       <h1>student dashboard {state.test}</h1>
       <BarChart state={state} makeListOfAverage={makeListOfAverage} />
-      <LineChart state={state} />
+      <LineChart state={state} makeListOfAverage={makeListOfAverage} />
     </div>
   );
 }

@@ -11,6 +11,7 @@ function studentListMaker() {
   //     assignments: data.filter((student) => student.name === student);
   // });
   // console.log(epicStudentList);
+  // console.log(studentList);
   return studentlist;
 }
 
@@ -19,28 +20,6 @@ function makeListAssignments() {
   const assignmentList = oneStudent.map((student) => student.assignment);
   return assignmentList;
 }
-
-// function makeListOfAverage() {
-//   const assignments = makeListAssignments();
-//   const newArray = [];
-//   const test = assignments.map((assignment) => {
-//     let tester = assignment;
-//     let filteredList = data.filter((student) => student.assignment === tester);
-//     // console.log(filteredList);
-//     let average =
-//       filteredList.reduce(
-//         (total, difficulty) => total + difficulty.difficulty,
-//         0
-//       ) / filteredList.length;
-//     // console.log(average);
-//     return newArray.push({ assignment: assignment, average: average });
-//   });
-//   console.log(newArray);
-//   return newArray;
-//   //   const average = array => array.reduce((a, b) => a + b) / array.length;
-//   // console.log(average([1,2,3,4,5]));
-// }
-// const listOfAverages = makeListOfAverage();
 
 export default class Container extends Component {
   constructor() {
@@ -57,7 +36,6 @@ export default class Container extends Component {
     this.makeListOfAverage = this.makeListOfAverage.bind(this);
   }
   makeListOfAverage() {
-    console.log("het werkt");
     const assignments = makeListAssignments();
     const newArray = [];
     const test = assignments.map((assignment) => {
@@ -90,7 +68,7 @@ export default class Container extends Component {
   render() {
     return (
       <div>
-        {/* {console.log(`student list = ${this.state.studentList}`)} */}
+        {console.log(`student list = ${this.state.studentList}`)}
         {console.table(`${this.state.listOfAverages}`)}
         <App state={this.state} makeListOfAverage={this.makeListOfAverage} />
       </div>
