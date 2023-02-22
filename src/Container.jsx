@@ -3,40 +3,56 @@ import App from "./App";
 import { testData } from "./assets/testdata";
 import data from "./assets/data";
 
-function studentListMaker() {
-  const studentArray = data.map((student) => student.name);
-  const studentlist = [...new Set(studentArray)];
-  // const epicStudentList = studentlist.map((student) => {
-  //   name: student,
-  //     assignments: data.filter((student) => student.name === student);
-  // });
-  // console.log(epicStudentList);
-  // console.log(studentList);
-  return studentlist;
-}
-
-function makeListAssignments() {
-  const oneStudent = data.filter((student) => student.name === "Sandra");
-  const assignmentList = oneStudent.map((student) => student.assignment);
-  return assignmentList;
-}
-
 export default class Container extends Component {
   constructor() {
     super();
     this.state = {
+      data: data,
       test: "state works",
-      testData: testData,
-      singleStudentData: data.filter((student) => student.name === "Sandra"),
-      studentList: studentListMaker(),
-      assignmentList: makeListAssignments(),
-      // listOfAverages: listOfAverages,
-      // [...new Set(data.map((student) => student.name))],
+
+      studentList: [],
     };
     this.makeListOfAverage = this.makeListOfAverage.bind(this);
+    this.epicStudentListMaker = this.epicStudentListMaker.bind(this);
+    // this.makeListAssignments = this.makeListAssignments.bind(this);
+    // this.studentListMaker = this.studentListMaker.bind(this);
   }
+
+  studentListMaker() {
+    const studentArray = data.map((student) => student.name);
+    const studentList = [...new Set(studentArray)];
+    // console.log(studentList);
+    return studentList;
+  }
+
+  makeListAssignments() {
+    const firstStudentName = this.state.data[0].name;
+    // console.log(firstStudentName);
+    const oneStudent = this.state.data.filter(
+      (student) => student.name === firstStudentName
+    );
+    const assignmentList = oneStudent.map((student) => student.assignment);
+    return assignmentList;
+  }
+  epicStudentListMaker() {
+    const studentList = this.studentListMaker();
+    const epicStudentList = studentList.map((student, index) => {
+      const studentName = student;
+      return {
+        id: index,
+        name: student,
+        assignments: this.state.data.filter(
+          (student) => student.name === studentName
+        ),
+      };
+    });
+    // console.log(epicStudentList);
+    return epicStudentList;
+  }
+
   makeListOfAverage() {
-    const assignments = makeListAssignments();
+    const assignments = this.makeListAssignments();
+    // console.log(assignments);
     const newArray = [];
     const test = assignments.map((assignment) => {
       let filteredList = data.filter(
@@ -68,9 +84,13 @@ export default class Container extends Component {
   render() {
     return (
       <div>
-        {console.log(`student list = ${this.state.studentList}`)}
-        {console.table(`${this.state.listOfAverages}`)}
-        <App state={this.state} makeListOfAverage={this.makeListOfAverage} />
+        {/* {console.log(this.studentListMaker())} */}
+        {/* {console.log(this.epicStudentListMaker())} */}
+        <App
+          state={this.state}
+          makeListOfAverage={this.makeListOfAverage}
+          studentList={this.epicStudentListMaker}
+        />
       </div>
     );
   }

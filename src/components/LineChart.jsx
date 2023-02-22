@@ -68,6 +68,8 @@ export default function LineChart({ state, makeListOfAverage }) {
       x: {
         ticks: {
           autoSkip: false,
+          maxRotation: 80,
+          minRotation: 40,
         },
       },
     },

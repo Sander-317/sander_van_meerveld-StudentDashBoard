@@ -74,6 +74,8 @@ export default function BarChart({ state, makeListOfAverage }) {
       x: {
         ticks: {
           autoSkip: false,
+          maxRotation: 80,
+          minRotation: 40,
         },
       },
     },
