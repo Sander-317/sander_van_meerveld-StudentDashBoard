@@ -69,6 +69,29 @@ export default function BarChart({ state, makeListOfAverage }) {
         text: state.test,
       },
     },
+    scales: {
+      // backdropPadding: 10,
+      x: {
+        ticks: {
+          autoSkip: false,
+        },
+      },
+    },
+    // scaleShowValues: true,
+
+    // scales: {
+    //   xAxes: [
+    //     {
+    //       ticks: {
+    //         maxRotation: 50,
+    //         minRotation: 30,
+    //         padding: 10,
+    //         autoSkip: false,
+    //         fontSize: 10,
+    //       },
+    //     },
+    //   ],
+    // },
   };
 
   // const labels = state.singleStudentData.map((student) => student.assignment);

@@ -64,6 +64,13 @@ export default function LineChart({ state, makeListOfAverage }) {
     Legend
   );
   const options = {
+    scales: {
+      x: {
+        ticks: {
+          autoSkip: false,
+        },
+      },
+    },
     responsive: true,
     plugins: {
       legend: {
@@ -77,7 +84,8 @@ export default function LineChart({ state, makeListOfAverage }) {
   };
   const newArray = makeListOfAverage();
   const labels = newArray.map((assignment) => assignment.assignment);
-  console.log(newArray);
+  // console.log("in line chart", labels);
+  // console.log(newArray);
 
   const data = {
     labels,
