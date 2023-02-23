@@ -8,6 +8,7 @@ export default function StudentList({ state }) {
       key={index}
       onClick={() => console.log(student.name)}
     >
+      <input type="checkbox"></input>
       {student.name}
     </li>
   ));
