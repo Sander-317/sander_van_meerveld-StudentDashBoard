@@ -1,6 +1,5 @@
 import React, { Component, setState } from "react";
 import App from "./App";
-import { testData } from "./assets/testdata";
 import data from "./assets/data";
 
 export default class Container extends Component {
@@ -34,6 +33,7 @@ export default class Container extends Component {
   }
   epicStudentListMaker() {
     const studentList = this.studentListMaker();
+
     const epicStudentList = studentList.map((student, index) => {
       const studentName = student;
       return {
@@ -53,6 +53,7 @@ export default class Container extends Component {
 
   makeListOfAverage() {
     const assignments = this.makeListAssignments();
+
     // console.log(assignments);
     const newArray = [];
     assignments.map((assignment) => {

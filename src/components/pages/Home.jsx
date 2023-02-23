@@ -1,7 +1,7 @@
 import React from "react";
 import BarChart from "../BarChart";
 import LineChart from "../LineChart";
-import StudentList from "../StudentList";
+import StudentLinkList from "../StudentLinkList";
 
 export default function Home({ state }) {
   return (
@@ -10,7 +10,7 @@ export default function Home({ state }) {
       <LineChart state={state} />
       <ul className="name-list">
         <h2>student list:</h2>
-        <StudentList state={state} />
+        <StudentLinkList state={state} />
       </ul>
     </div>
   );
