@@ -3,7 +3,13 @@ import "./App.css";
 import Home from "./components/pages/Home";
 import Student from "./components/pages/Student";
 
-function App({ state, addArrayToCustomArray, toggleState }) {
+function App({
+  state,
+  addArrayToCustomArray,
+  toggleState,
+  epicStudentListMaker,
+  makeListOfAverage,
+}) {
   return (
     <div className="App">
       <h1>student dashboard {state.test}</h1>
@@ -16,6 +22,8 @@ function App({ state, addArrayToCustomArray, toggleState }) {
               state={state}
               addArrayToCustomArray={addArrayToCustomArray}
               toggleState={toggleState}
+              epicStudentListMaker={epicStudentListMaker}
+              makeListOfAverage={makeListOfAverage}
             />
           }
         ></Route>

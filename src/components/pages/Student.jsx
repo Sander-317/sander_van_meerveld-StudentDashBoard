@@ -1,14 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import BarChart from "../BarChart";
 import CheckBoxes from "../CheckBoxes";
 import LineChart from "../LineChart";
 import StudentList from "../StudentList";
 
 export default function Student({ state, addArrayToCustomArray, toggleState }) {
-  const student = useParams();
-  console.log("student params", student.student);
-
   return (
     <div>
       {" "}

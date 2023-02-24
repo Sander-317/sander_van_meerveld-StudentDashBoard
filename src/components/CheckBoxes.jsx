@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckBoxes({ state, toggleState }) {
+  const navigate = useNavigate();
   const handleChange = (e) => {
     toggleState(e.target.value);
+  };
+  const handleClick = (e) => {
+    toggleState("home");
+    navigate("/");
   };
 
   return (
@@ -43,6 +49,14 @@ export default function CheckBoxes({ state, toggleState }) {
         ></input>
         Show difficulty in Chart
       </label>
+      <br />
+      {state.home ? (
+        ""
+      ) : (
+        <button onClick={handleClick} className="home-button">
+          home
+        </button>
+      )}
     </div>
   );
 }

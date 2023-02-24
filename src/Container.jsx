@@ -151,6 +151,8 @@ export default class Container extends Component {
           state={this.state}
           addArrayToCustomArray={this.addArrayToCustomArray}
           toggleState={this.toggleState}
+          epicStudentListMaker={this.epicStudentListMaker}
+          makeListOfAverage={this.makeListOfAverage}
         />
       </div>
     );
