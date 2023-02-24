@@ -25,6 +25,7 @@ function App({ state, addArrayToCustomArray, toggleState }) {
             <Student
               state={state}
               addArrayToCustomArray={addArrayToCustomArray}
+              toggleState={toggleState}
             />
           }
         ></Route>

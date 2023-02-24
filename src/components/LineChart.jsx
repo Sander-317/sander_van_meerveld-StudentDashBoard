@@ -11,48 +11,6 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Title,
-//   Tooltip,
-//   Legend
-// );
-// const options = {
-//   responsive: true,
-//   plugins: {
-//     legend: {
-//       position: "top",
-//     },
-//     title: {
-//       display: true,
-//       text: "Chart.js Line Chart",
-//     },
-//   },
-// };
-
-// const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-// const data = {
-//   labels,
-//   datasets: [
-//     {
-//       label: "Dataset 1",
-//       data: labels.map(() => Math.floor(Math.random() * 100)),
-//       borderColor: "rgb(255, 99, 132)",
-//       backgroundColor: "rgba(255, 99, 132, 0.5)",
-//     },
-//     {
-//       label: "Dataset 2",
-//       data: labels.map(() => Math.floor(Math.random() * 100)),
-//       borderColor: "rgb(53, 162, 235)",
-//       backgroundColor: "rgba(53, 162, 235, 0.5)",
-//     },
-//   ],
-// };
-
 export default function LineChart({ state }) {
   ChartJS.register(
     CategoryScale,
@@ -80,29 +38,32 @@ export default function LineChart({ state }) {
       },
       title: {
         display: true,
-        text: "Chart.js Line Chart",
+        text: state.home
+          ? "chart of all students"
+          : "chart of " + state.customDataNamesList.map((item) => item),
       },
     },
   };
-  const newArray = state.ListAllStudentAverage;
-  const labels = newArray.map((assignment) => assignment.assignment);
-  // console.log("in line chart", labels);
-  // console.log(newArray);
+  const allStudentArray = state.ListAllStudentAverage;
+  const singleStudentArray = state.customDataList;
+  const labels = allStudentArray.map((assignment) => assignment.assignment);
 
   const data = {
     labels,
     datasets: [
       {
         label: "Difficulty",
-        data: newArray.map((assignment) => assignment.averageDifficulty),
-        // labels.map(() => Math.floor(Math.random() * 100)),
+        data: state.home
+          ? allStudentArray.map((assignment) => assignment.averageDifficulty)
+          : singleStudentArray.map((assignment) => assignment.difficulty),
         borderColor: "darkred",
         backgroundColor: "red",
       },
       {
         label: "fun",
-        data: newArray.map((assignment) => assignment.averageFun),
-        // labels.map(() => Math.floor(Math.random() * 100)),
+        data: state.home
+          ? allStudentArray.map((assignment) => assignment.averageFun)
+          : singleStudentArray.map((assignment) => assignment.fun),
         borderColor: "green",
         backgroundColor: "limegreen",
       },
@@ -110,6 +71,4 @@ export default function LineChart({ state }) {
   };
 
   return <Line options={options} data={data} />;
-
-  // <div>LineChart {state.test}</div>;
 }

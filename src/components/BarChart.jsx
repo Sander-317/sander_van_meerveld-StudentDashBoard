@@ -46,18 +46,11 @@ export default function BarChart({ state }) {
     },
   };
 
-  const params = useParams();
-  console.log("home params", params.student);
-  // const labels = state.singleStudentData.map((student) => student.assignment);
-
-  // const newArray = state.home
-  //   ? state.ListAllStudentAverage
-  //   : state.customDataList;
   const newArray = state.ListAllStudentAverage;
   const newerArray = state.customDataList;
 
   const labels = newArray.map((assignment) => assignment.assignment);
-  // console.log(newArray);
+
   const chartData = {
     labels,
     datasets: [
@@ -67,59 +60,19 @@ export default function BarChart({ state }) {
             data: state.home
               ? newArray.map((assignment) => assignment.averageDifficulty)
               : newerArray.map((assignment) => assignment.difficulty),
-            // data: newArray.map((assignment) => assignment.averageDifficulty),
-            // state.singleStudentData.map((student) => student.difficulty),
-            // labels.map(() => Math.floor(Math.random() * 100)),
-
             backgroundColor: "darkred",
           }
         : "",
-
-      // {
-      //   label: "Difficulty",
-      //   data: state.home
-      //     ? newArray.map((assignment) => assignment.averageDifficulty)
-      //     : newerArray.map((assignment) => assignment.difficulty),
-      //   // data: newArray.map((assignment) => assignment.averageDifficulty),
-      //   // state.singleStudentData.map((student) => student.difficulty),
-      //   // labels.map(() => Math.floor(Math.random() * 100)),
-
-      //   backgroundColor: "darkred",
-      // },
       state.showFun
         ? {
             label: "Fun",
             data: state.home
               ? newArray.map((assignment) => assignment.averageFun)
               : newerArray.map((assignment) => assignment.fun),
-
-            // data: newArray.map((assignment) => assignment.averageFun),
-            // labels.map(() => Math.floor(Math.random() * 100)),
-            // state.singleStudentData.map((student) => student.fun),
             backgroundColor: "green",
           }
         : "",
-      // {
-      //   label: "Fun",
-      //   data: state.home
-      //     ? newArray.map((assignment) => assignment.averageFun)
-      //     : newerArray.map((assignment) => assignment.fun),
-
-      //   // data: newArray.map((assignment) => assignment.averageFun),
-      //   // labels.map(() => Math.floor(Math.random() * 100)),
-      //   // state.singleStudentData.map((student) => student.fun),
-      //   backgroundColor: "green",
-      // },
     ],
   };
   return <Bar options={options} data={chartData} />;
-  // (
-  //   <div>
-  //     {state.singleStudentData.map((student) => (
-  //       <div>{student.assignment}</div>
-  //     ))}
-  //   </div>
-  // );
-
-  // <div>BarChart {state.test}</div>;
 }
