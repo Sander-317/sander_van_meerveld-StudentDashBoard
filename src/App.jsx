@@ -18,7 +18,15 @@ function App({ state, addArrayToCustomArray, toggleState }) {
             />
           }
         ></Route>
-        <Route path=":student" element={<Student state={state} />}></Route>
+        <Route
+          path=":student"
+          element={
+            <Student
+              state={state}
+              addArrayToCustomArray={addArrayToCustomArray}
+            />
+          }
+        ></Route>
       </Routes>
     </div>
   );

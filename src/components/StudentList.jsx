@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function StudentList({ state }) {
+export default function StudentList({ state, addArrayToCustomArray }) {
   const nameList = state.studentList;
   return nameList.map((student, index) => (
     <li
@@ -8,7 +8,10 @@ export default function StudentList({ state }) {
       key={index}
       onClick={() => console.log(student.name)}
     >
-      <input type="checkbox"></input>
+      <input
+        type="checkbox"
+        onChange={() => addArrayToCustomArray(student.id)}
+      ></input>
       {student.name}
     </li>
   ));
