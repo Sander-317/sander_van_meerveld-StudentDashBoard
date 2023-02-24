@@ -8,6 +8,8 @@ export default class Container extends Component {
     this.state = {
       data: data,
       home: true,
+      barChart: true,
+      lineChart: true,
       test: "state works",
 
       studentList: [],
@@ -23,15 +25,21 @@ export default class Container extends Component {
     // this.studentListMaker = this.studentListMaker.bind(this);
   }
 
-  toggleState(e) {
+  toggleState = (e) => {
     switch (e) {
       case "home":
         this.setState({ home: !this.state.home });
         break;
+      case "bar":
+        this.setState({ barChart: !this.state.barChart });
+        break;
+      case "line":
+        this.setState({ lineChart: !this.state.lineChart });
+        break;
       default:
         console.log(e);
     }
-  }
+  };
 
   studentListMaker() {
     const studentArray = this.state.data.map((student) => student.name);

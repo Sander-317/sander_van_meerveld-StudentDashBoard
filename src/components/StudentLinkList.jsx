@@ -8,7 +8,7 @@ export default function StudentLinkList({
 }) {
   const nameList = state.studentList;
   const navigate = useNavigate();
-
+  //   console.log("togglestate", toggleState);
   //   console.log(nameList);
   function onLinkPress(e) {
     e.preventDefault();
