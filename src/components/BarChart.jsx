@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import data from "../assets/data";
+import { useParams } from "react-router-dom";
 
 ChartJS.register(
   CategoryScale,
@@ -20,43 +21,6 @@ ChartJS.register(
   Legend
 );
 
-// const singleStudentData = data.filter((student) => student.name === "Sandra");
-// console.log(singleStudentData);
-
-// const options = {
-//   responsive: true,
-//   plugins: {
-//     legend: {
-//       position: "top",
-//     },
-//     title: {
-//       display: true,
-//       text: "Chart.js Bar Chart",
-//     },
-//   },
-// };
-
-// const labels = singleStudentData.map((student) => student.assignment);
-// console.log("labels", labels);
-
-// const chartData = {
-//   labels,
-//   datasets: [
-//     {
-//       label: "Difficulty",
-//       data: singleStudentData.map((student) => student.difficulty),
-//       // labels.map(() => Math.floor(Math.random() * 100)),
-//       backgroundColor: "darkred",
-//     },
-//     {
-//       label: "Fun",
-//       data: singleStudentData.map((student) => student.fun),
-//       // labels.map(() => Math.floor(Math.random() * 100)),
-//       backgroundColor: "green",
-//     },
-//   ],
-// };
-
 export default function BarChart({ state }) {
   const options = {
     responsive: true,
@@ -66,11 +30,12 @@ export default function BarChart({ state }) {
       },
       title: {
         display: true,
-        text: state.test,
+        text: state.home
+          ? "chart of all students"
+          : "chart of " + state.customDataNamesList.map((item) => item),
       },
     },
     scales: {
-      // backdropPadding: 10,
       x: {
         ticks: {
           autoSkip: false,
@@ -79,25 +44,17 @@ export default function BarChart({ state }) {
         },
       },
     },
-    // scaleShowValues: true,
-
-    // scales: {
-    //   xAxes: [
-    //     {
-    //       ticks: {
-    //         maxRotation: 50,
-    //         minRotation: 30,
-    //         padding: 10,
-    //         autoSkip: false,
-    //         fontSize: 10,
-    //       },
-    //     },
-    //   ],
-    // },
   };
 
+  const params = useParams();
+  console.log("home params", params.student);
   // const labels = state.singleStudentData.map((student) => student.assignment);
+
+  // const newArray = state.home
+  //   ? state.ListAllStudentAverage
+  //   : state.customDataList;
   const newArray = state.ListAllStudentAverage;
+  const newerArray = state.customDataList;
 
   const labels = newArray.map((assignment) => assignment.assignment);
   // console.log(newArray);
@@ -106,7 +63,10 @@ export default function BarChart({ state }) {
     datasets: [
       {
         label: "Difficulty",
-        data: newArray.map((assignment) => assignment.averageDifficulty),
+        data: state.home
+          ? newArray.map((assignment) => assignment.averageDifficulty)
+          : newerArray.map((assignment) => assignment.difficulty),
+        // data: newArray.map((assignment) => assignment.averageDifficulty),
         // state.singleStudentData.map((student) => student.difficulty),
         // labels.map(() => Math.floor(Math.random() * 100)),
 
@@ -114,7 +74,11 @@ export default function BarChart({ state }) {
       },
       {
         label: "Fun",
-        data: newArray.map((assignment) => assignment.averageFun),
+        data: state.home
+          ? newArray.map((assignment) => assignment.averageFun)
+          : newerArray.map((assignment) => assignment.fun),
+
+        // data: newArray.map((assignment) => assignment.averageFun),
         // labels.map(() => Math.floor(Math.random() * 100)),
         // state.singleStudentData.map((student) => student.fun),
         backgroundColor: "green",

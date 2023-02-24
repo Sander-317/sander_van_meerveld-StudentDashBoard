@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./components/pages/Home";
 import Student from "./components/pages/Student";
 
-function App({ state, addArrayToCustomArray }) {
+function App({ state, addArrayToCustomArray, toggleState }) {
   return (
     <div className="App">
       <h1>student dashboard {state.test}</h1>
@@ -11,7 +11,11 @@ function App({ state, addArrayToCustomArray }) {
         <Route
           path="/"
           element={
-            <Home state={state} addArrayToCustomArray={addArrayToCustomArray} />
+            <Home
+              state={state}
+              addArrayToCustomArray={addArrayToCustomArray}
+              toggleState={toggleState}
+            />
           }
         ></Route>
         <Route path=":student" element={<Student state={state} />}></Route>

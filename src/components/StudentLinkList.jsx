@@ -1,19 +1,23 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function StudentLinkList({ state, addArrayToCustomArray }) {
+export default function StudentLinkList({
+  state,
+  addArrayToCustomArray,
+  toggleState,
+}) {
   const nameList = state.studentList;
   const navigate = useNavigate();
 
   //   console.log(nameList);
   function onLinkPress(e) {
     e.preventDefault();
-    console.log(e.target.value);
-    const newArray = state.studentList.filter(
-      (student) => String(student.id) === String(e.target.value)
-    );
+    // console.log(e.target.value);
+    // const newArray = state.studentList.filter(
+    //   (student) => String(student.id) === String(e.target.value)
+    // );
     addArrayToCustomArray(e.target.value);
-
+    toggleState("home");
     // addArrayToCustomArray(newArray[0].assignments);
     // console.log(newArray[0].assignments);
     navigate("./" + e.target.value);

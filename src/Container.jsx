@@ -7,17 +7,30 @@ export default class Container extends Component {
     super();
     this.state = {
       data: data,
+      home: true,
       test: "state works",
 
       studentList: [],
+      customDataNamesList: [],
       customDataList: [],
       ListAllStudentAverage: [],
     };
     this.addArrayToCustomArray = this.addArrayToCustomArray.bind(this);
+    this.toggleState = this.toggleState.bind(this);
     // this.makeListOfAverage = this.makeListOfAverage.bind(this);
     // this.epicStudentListMaker = this.epicStudentListMaker.bind(this);
     // this.makeListAssignments = this.makeListAssignments.bind(this);
     // this.studentListMaker = this.studentListMaker.bind(this);
+  }
+
+  toggleState(e) {
+    switch (e) {
+      case "home":
+        this.setState({ home: !this.state.home });
+        break;
+      default:
+        console.log(e);
+    }
   }
 
   studentListMaker() {
@@ -91,12 +104,15 @@ export default class Container extends Component {
     );
     console.log("addArrayToCustomArray student =", student);
     const oldArray = this.state.customDataList;
-    console.log("oldArray =", oldArray);
+    // console.log("oldArray =", oldArray);
     const studentArray = student[0].assignments;
-    console.log("studentArray =", studentArray);
+    // console.log("studentArray =", studentArray);
     const newArray = oldArray.concat(studentArray);
-    console.log("newArray =", newArray);
-
+    // console.log("newArray =", newArray);
+    const namesList = this.state.customDataNamesList;
+    namesList.push(student[0].name);
+    console.log(namesList);
+    this.setState({ customDataNamesList: namesList });
     this.setState({ customDataList: newArray });
   };
 
@@ -110,6 +126,7 @@ export default class Container extends Component {
         <App
           state={this.state}
           addArrayToCustomArray={this.addArrayToCustomArray}
+          toggleState={this.toggleState}
         />
       </div>
     );

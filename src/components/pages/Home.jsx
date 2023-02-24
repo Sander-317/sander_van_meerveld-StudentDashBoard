@@ -3,7 +3,7 @@ import BarChart from "../BarChart";
 import LineChart from "../LineChart";
 import StudentLinkList from "../StudentLinkList";
 
-export default function Home({ state, addArrayToCustomArray }) {
+export default function Home({ state, addArrayToCustomArray, toggleState }) {
   return (
     <div>
       <BarChart state={state} />
@@ -13,6 +13,7 @@ export default function Home({ state, addArrayToCustomArray }) {
         <StudentLinkList
           state={state}
           addArrayToCustomArray={addArrayToCustomArray}
+          toggleState={toggleState}
         />
       </ul>
     </div>
