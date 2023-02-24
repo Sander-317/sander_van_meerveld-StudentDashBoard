@@ -49,21 +49,29 @@ export default class Container extends Component {
     }
   };
 
-  studentListMaker() {
-    const studentArray = this.state.data.map((student) => student.name);
-    const studentList = [...new Set(studentArray)];
-    return studentList;
-  }
+  listMaker = (property) => {
+    switch (property) {
+      case "name":
+        const studentArray = this.state.data.map((student) => student.name);
+        const studentList = [...new Set(studentArray)];
+        return studentList;
+        break;
+      case "assignment":
+        const assignmentArray = this.state.data.map(
+          (student) => student.assignment
+        );
+        const assignmentList = [...new Set(assignmentArray)];
+        return assignmentList;
 
-  makeListAssignments() {
-    const assignmentArray = this.state.data.map(
-      (assignment) => assignment.assignment
-    );
-    const assignmentList = [...new Set(assignmentArray)];
-    return assignmentList;
-  }
+        break;
+      default:
+        console.log(e);
+    }
+  };
+
   epicStudentListMaker() {
-    const studentList = this.studentListMaker();
+    const studentList = this.listMaker("name");
+    // const studentList = this.studentListMaker();
 
     const epicStudentList = studentList.map((student, index) => {
       const studentName = student;
@@ -83,7 +91,7 @@ export default class Container extends Component {
   }
 
   makeListOfAverage() {
-    const assignments = this.makeListAssignments();
+    const assignments = this.listMaker("assignment");
 
     // console.log(assignments);
     const newArray = [];
