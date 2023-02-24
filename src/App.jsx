@@ -3,12 +3,17 @@ import "./App.css";
 import Home from "./components/pages/Home";
 import Student from "./components/pages/Student";
 
-function App({ state }) {
+function App({ state, addArrayToCustomArray }) {
   return (
     <div className="App">
       <h1>student dashboard {state.test}</h1>
       <Routes>
-        <Route path="/" element={<Home state={state} />}></Route>
+        <Route
+          path="/"
+          element={
+            <Home state={state} addArrayToCustomArray={addArrayToCustomArray} />
+          }
+        ></Route>
         <Route path=":student" element={<Student state={state} />}></Route>
       </Routes>
     </div>

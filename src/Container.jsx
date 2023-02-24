@@ -10,10 +10,12 @@ export default class Container extends Component {
       test: "state works",
 
       studentList: [],
+      customDataList: [],
       ListAllStudentAverage: [],
     };
-    this.makeListOfAverage = this.makeListOfAverage.bind(this);
-    this.epicStudentListMaker = this.epicStudentListMaker.bind(this);
+    this.addArrayToCustomArray = this.addArrayToCustomArray.bind(this);
+    // this.makeListOfAverage = this.makeListOfAverage.bind(this);
+    // this.epicStudentListMaker = this.epicStudentListMaker.bind(this);
     // this.makeListAssignments = this.makeListAssignments.bind(this);
     // this.studentListMaker = this.studentListMaker.bind(this);
   }
@@ -82,6 +84,22 @@ export default class Container extends Component {
     // return newArray;
   }
 
+  addArrayToCustomArray = (id) => {
+    console.log("addArrayToCustomArray id =", id);
+    const student = this.state.studentList.filter(
+      (student) => String(student.id) === String(id)
+    );
+    console.log("addArrayToCustomArray student =", student);
+    const oldArray = this.state.customDataList;
+    console.log("oldArray =", oldArray);
+    const studentArray = student[0].assignments;
+    console.log("studentArray =", studentArray);
+    const newArray = oldArray.concat(studentArray);
+    console.log("newArray =", newArray);
+
+    this.setState({ customDataList: newArray });
+  };
+
   render() {
     return (
       <div>
@@ -91,8 +109,7 @@ export default class Container extends Component {
         {/* {console.log(this.epicStudentListMaker())} */}
         <App
           state={this.state}
-          makeListOfAverage={this.makeListOfAverage}
-          studentList={this.epicStudentListMaker}
+          addArrayToCustomArray={this.addArrayToCustomArray}
         />
       </div>
     );
