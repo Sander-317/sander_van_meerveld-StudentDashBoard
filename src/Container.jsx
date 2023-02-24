@@ -10,6 +10,8 @@ export default class Container extends Component {
       home: true,
       barChart: true,
       lineChart: true,
+      showFun: true,
+      showDifficulty: true,
       test: "state works",
 
       studentList: [],
@@ -35,6 +37,12 @@ export default class Container extends Component {
         break;
       case "line":
         this.setState({ lineChart: !this.state.lineChart });
+        break;
+      case "fun":
+        this.setState({ showFun: !this.state.showFun });
+        break;
+      case "difficulty":
+        this.setState({ showDifficulty: !this.state.showDifficulty });
         break;
       default:
         console.log(e);

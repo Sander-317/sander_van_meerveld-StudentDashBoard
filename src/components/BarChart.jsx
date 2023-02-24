@@ -61,28 +61,55 @@ export default function BarChart({ state }) {
   const chartData = {
     labels,
     datasets: [
-      {
-        label: "Difficulty",
-        data: state.home
-          ? newArray.map((assignment) => assignment.averageDifficulty)
-          : newerArray.map((assignment) => assignment.difficulty),
-        // data: newArray.map((assignment) => assignment.averageDifficulty),
-        // state.singleStudentData.map((student) => student.difficulty),
-        // labels.map(() => Math.floor(Math.random() * 100)),
+      state.showDifficulty
+        ? {
+            label: "Difficulty",
+            data: state.home
+              ? newArray.map((assignment) => assignment.averageDifficulty)
+              : newerArray.map((assignment) => assignment.difficulty),
+            // data: newArray.map((assignment) => assignment.averageDifficulty),
+            // state.singleStudentData.map((student) => student.difficulty),
+            // labels.map(() => Math.floor(Math.random() * 100)),
 
-        backgroundColor: "darkred",
-      },
-      {
-        label: "Fun",
-        data: state.home
-          ? newArray.map((assignment) => assignment.averageFun)
-          : newerArray.map((assignment) => assignment.fun),
+            backgroundColor: "darkred",
+          }
+        : "",
 
-        // data: newArray.map((assignment) => assignment.averageFun),
-        // labels.map(() => Math.floor(Math.random() * 100)),
-        // state.singleStudentData.map((student) => student.fun),
-        backgroundColor: "green",
-      },
+      // {
+      //   label: "Difficulty",
+      //   data: state.home
+      //     ? newArray.map((assignment) => assignment.averageDifficulty)
+      //     : newerArray.map((assignment) => assignment.difficulty),
+      //   // data: newArray.map((assignment) => assignment.averageDifficulty),
+      //   // state.singleStudentData.map((student) => student.difficulty),
+      //   // labels.map(() => Math.floor(Math.random() * 100)),
+
+      //   backgroundColor: "darkred",
+      // },
+      state.showFun
+        ? {
+            label: "Fun",
+            data: state.home
+              ? newArray.map((assignment) => assignment.averageFun)
+              : newerArray.map((assignment) => assignment.fun),
+
+            // data: newArray.map((assignment) => assignment.averageFun),
+            // labels.map(() => Math.floor(Math.random() * 100)),
+            // state.singleStudentData.map((student) => student.fun),
+            backgroundColor: "green",
+          }
+        : "",
+      // {
+      //   label: "Fun",
+      //   data: state.home
+      //     ? newArray.map((assignment) => assignment.averageFun)
+      //     : newerArray.map((assignment) => assignment.fun),
+
+      //   // data: newArray.map((assignment) => assignment.averageFun),
+      //   // labels.map(() => Math.floor(Math.random() * 100)),
+      //   // state.singleStudentData.map((student) => student.fun),
+      //   backgroundColor: "green",
+      // },
     ],
   };
   return <Bar options={options} data={chartData} />;

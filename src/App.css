@@ -62,3 +62,7 @@
   color: red;
   cursor: pointer;
 }
+
+label {
+  margin: 0.5rem;
+}
