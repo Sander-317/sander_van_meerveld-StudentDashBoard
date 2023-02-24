@@ -4,11 +4,16 @@ import CheckBoxes from "../CheckBoxes";
 import LineChart from "../LineChart";
 import StudentList from "../StudentList";
 
-export default function Student({ state, addArrayToCustomArray, toggleState }) {
+export default function Student({
+  state,
+  addArrayToCustomArray,
+  toggleState,
+  reset,
+}) {
   return (
     <div>
       {" "}
-      <CheckBoxes state={state} toggleState={toggleState} />
+      <CheckBoxes state={state} toggleState={toggleState} reset={reset} />
       {state.barChart ? <BarChart state={state} /> : ""}
       {state.lineChart ? <LineChart state={state} /> : ""}
       <ul className="name-list">

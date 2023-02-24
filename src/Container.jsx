@@ -21,6 +21,7 @@ export default class Container extends Component {
     };
     this.addArrayToCustomArray = this.addArrayToCustomArray.bind(this);
     this.toggleState = this.toggleState.bind(this);
+    this.reset = this.reset.bind(this);
     // this.makeListOfAverage = this.makeListOfAverage.bind(this);
     // this.epicStudentListMaker = this.epicStudentListMaker.bind(this);
     // this.makeListAssignments = this.makeListAssignments.bind(this);
@@ -139,6 +140,10 @@ export default class Container extends Component {
     this.setState({ customDataNamesList: namesList });
     this.setState({ customDataList: newArray });
   };
+  reset() {
+    this.setState({ customDataList: [] });
+    this.setState({ customDataNamesList: [] });
+  }
 
   render() {
     return (
@@ -153,6 +158,7 @@ export default class Container extends Component {
           toggleState={this.toggleState}
           epicStudentListMaker={this.epicStudentListMaker}
           makeListOfAverage={this.makeListOfAverage}
+          reset={this.reset}
         />
       </div>
     );

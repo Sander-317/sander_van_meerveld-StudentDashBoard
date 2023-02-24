@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function CheckBoxes({ state, toggleState }) {
+export default function CheckBoxes({ state, toggleState, reset }) {
   const navigate = useNavigate();
   const handleChange = (e) => {
     toggleState(e.target.value);
   };
   const handleClick = (e) => {
+    reset();
     toggleState("home");
     navigate("/");
   };

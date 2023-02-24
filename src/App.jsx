@@ -9,6 +9,7 @@ function App({
   toggleState,
   epicStudentListMaker,
   makeListOfAverage,
+  reset,
 }) {
   return (
     <div className="App">
@@ -34,6 +35,7 @@ function App({
               state={state}
               addArrayToCustomArray={addArrayToCustomArray}
               toggleState={toggleState}
+              reset={reset}
             />
           }
         ></Route>
