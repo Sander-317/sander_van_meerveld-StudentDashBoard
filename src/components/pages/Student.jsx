@@ -22,7 +22,11 @@ export default function Student({
       ) : (
         ""
       )}
-      {state.lineChart ? <LineChart state={state} /> : ""}
+      {state.lineChart ? (
+        <LineChart state={state} getArrayOfAverage={getArrayOfAverage} />
+      ) : (
+        ""
+      )}
       <ul className="name-list">
         <h2>student list:</h2>
 

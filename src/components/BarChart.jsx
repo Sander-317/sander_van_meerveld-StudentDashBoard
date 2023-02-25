@@ -46,13 +46,8 @@ export default function BarChart({ state, getArrayOfAverage }) {
     },
   };
 
-  // const newArray = state.ListAllStudentAverage;
   const allStudentArray = getArrayOfAverage(state.data);
   const customArray = getArrayOfAverage(state.customDataList);
-  // const newerArray = state.customDataList;
-
-  // getArrayOfAverage(state.customDataList);
-
   const labels = allStudentArray.map((assignment) => assignment.assignment);
 
   const chartData = {

@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-export default function LineChart({ state }) {
+export default function LineChart({ state, getArrayOfAverage }) {
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -44,8 +44,8 @@ export default function LineChart({ state }) {
       },
     },
   };
-  const allStudentArray = state.ListAllStudentAverage;
-  const singleStudentArray = state.customDataList;
+  const allStudentArray = getArrayOfAverage(state.data);
+  const customArray = getArrayOfAverage(state.customDataList);
   const labels = allStudentArray.map((assignment) => assignment.assignment);
 
   const data = {
@@ -55,7 +55,7 @@ export default function LineChart({ state }) {
         label: "Difficulty",
         data: state.home
           ? allStudentArray.map((assignment) => assignment.averageDifficulty)
-          : singleStudentArray.map((assignment) => assignment.difficulty),
+          : customArray.map((assignment) => assignment.averageDifficulty),
         borderColor: "darkred",
         backgroundColor: "red",
       },
@@ -63,7 +63,7 @@ export default function LineChart({ state }) {
         label: "fun",
         data: state.home
           ? allStudentArray.map((assignment) => assignment.averageFun)
-          : singleStudentArray.map((assignment) => assignment.fun),
+          : customArray.map((assignment) => assignment.averageFun),
         borderColor: "green",
         backgroundColor: "limegreen",
       },
