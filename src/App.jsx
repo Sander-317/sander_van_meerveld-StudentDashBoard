@@ -10,6 +10,7 @@ function App({
   epicStudentListMaker,
   makeListOfAverage,
   reset,
+  changeIsChecked,
 }) {
   return (
     <div className="App">
@@ -25,6 +26,7 @@ function App({
               toggleState={toggleState}
               epicStudentListMaker={epicStudentListMaker}
               makeListOfAverage={makeListOfAverage}
+              changeIsChecked={changeIsChecked}
             />
           }
         ></Route>

@@ -1,10 +1,16 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import BarChart from "../BarChart";
 import CheckBoxes from "../CheckBoxes";
 import LineChart from "../LineChart";
 import StudentLinkList from "../StudentLinkList";
 
-export default function Home({ state, addArrayToCustomArray, toggleState }) {
+export default function Home({
+  state,
+  addArrayToCustomArray,
+  toggleState,
+  changeIsChecked,
+}) {
   return (
     <div>
       <CheckBoxes state={state} toggleState={toggleState} />
@@ -17,6 +23,7 @@ export default function Home({ state, addArrayToCustomArray, toggleState }) {
           state={state}
           addArrayToCustomArray={addArrayToCustomArray}
           toggleState={toggleState}
+          changeIsChecked={changeIsChecked}
         />
       </ul>
     </div>

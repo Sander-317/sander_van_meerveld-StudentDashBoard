@@ -1,4 +1,5 @@
 import React, { Component, setState } from "react";
+import { useParams } from "react-router-dom";
 import App from "./App";
 import data from "./assets/data";
 
@@ -22,6 +23,7 @@ export default class Container extends Component {
     this.addArrayToCustomArray = this.addArrayToCustomArray.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.reset = this.reset.bind(this);
+    this.changeIsChecked = this.changeIsChecked.bind(this);
     // this.makeListOfAverage = this.makeListOfAverage.bind(this);
     // this.epicStudentListMaker = this.epicStudentListMaker.bind(this);
     // this.makeListAssignments = this.makeListAssignments.bind(this);
@@ -79,6 +81,7 @@ export default class Container extends Component {
       return {
         id: index,
         name: student,
+        isChecked: false,
         assignments: this.state.data.filter(
           (student) => student.name === studentName
         ),
@@ -145,11 +148,22 @@ export default class Container extends Component {
     this.setState({ customDataNamesList: [] });
   }
 
+  changeIsChecked(id) {
+    console.log("id", id);
+    // this.state.studentList[id].isChecked = true;
+    this.setState({
+      studentList: (this.state.studentList[id].isChecked = true),
+    });
+
+    console.log(this.state.studentList[id]);
+  }
+
   render() {
     return (
       <div>
         {this.epicStudentListMaker()}
         {this.makeListOfAverage()}
+
         {/* {console.log(this.studentListMaker())} */}
         {/* {console.log(this.epicStudentListMaker())} */}
         <App
@@ -159,6 +173,7 @@ export default class Container extends Component {
           epicStudentListMaker={this.epicStudentListMaker}
           makeListOfAverage={this.makeListOfAverage}
           reset={this.reset}
+          changeIsChecked={this.changeIsChecked}
         />
       </div>
     );
