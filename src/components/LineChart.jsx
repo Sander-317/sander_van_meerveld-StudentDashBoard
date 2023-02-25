@@ -51,22 +51,29 @@ export default function LineChart({ state, getArrayOfAverage }) {
   const data = {
     labels,
     datasets: [
-      {
-        label: "Difficulty",
-        data: state.home
-          ? allStudentArray.map((assignment) => assignment.averageDifficulty)
-          : customArray.map((assignment) => assignment.averageDifficulty),
-        borderColor: "darkred",
-        backgroundColor: "red",
-      },
-      {
-        label: "fun",
-        data: state.home
-          ? allStudentArray.map((assignment) => assignment.averageFun)
-          : customArray.map((assignment) => assignment.averageFun),
-        borderColor: "green",
-        backgroundColor: "limegreen",
-      },
+      state.showDifficulty
+        ? {
+            label: "Difficulty",
+            data: state.home
+              ? allStudentArray.map(
+                  (assignment) => assignment.averageDifficulty
+                )
+              : customArray.map((assignment) => assignment.averageDifficulty),
+            borderColor: "darkred",
+            backgroundColor: "red",
+          }
+        : "",
+
+      state.showFun
+        ? {
+            label: "fun",
+            data: state.home
+              ? allStudentArray.map((assignment) => assignment.averageFun)
+              : customArray.map((assignment) => assignment.averageFun),
+            borderColor: "green",
+            backgroundColor: "limegreen",
+          }
+        : "",
     ],
   };
 
