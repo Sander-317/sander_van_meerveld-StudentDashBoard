@@ -130,7 +130,15 @@ export default class Container extends Component {
     const assignments = this.listMaker("assignment");
     console.log("array of average", array);
     if (array.length < 60) {
-      return array;
+      const newArray = [];
+      array.map((item) => {
+        newArray.push({
+          assignment: item.assignment,
+          averageDifficulty: item.difficulty,
+          averageFun: item.fun,
+        });
+      });
+      return newArray;
     } else {
       const newArray = [];
       assignments.map((assignment) => {
@@ -198,7 +206,7 @@ export default class Container extends Component {
     return (
       <div>
         {this.epicStudentListMaker()}
-        {this.makeListOfAverage()}
+        {/* {this.makeListOfAverage()} */}
 
         {/* {console.log(this.studentListMaker())} */}
         {/* {console.log(this.epicStudentListMaker())} */}
