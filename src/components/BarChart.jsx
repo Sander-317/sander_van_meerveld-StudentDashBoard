@@ -21,7 +21,7 @@ ChartJS.register(
   Legend
 );
 
-export default function BarChart({ state }) {
+export default function BarChart({ state, getArrayOfAverage }) {
   const options = {
     responsive: true,
     plugins: {
@@ -46,8 +46,12 @@ export default function BarChart({ state }) {
     },
   };
 
-  const newArray = state.ListAllStudentAverage;
-  const newerArray = state.customDataList;
+  // const newArray = state.ListAllStudentAverage;
+  const newArray = getArrayOfAverage(state.data);
+  const newerArray = getArrayOfAverage(state.customDataList);
+  // const newerArray = state.customDataList;
+
+  // getArrayOfAverage(state.customDataList);
 
   const labels = newArray.map((assignment) => assignment.assignment);
 
@@ -59,7 +63,7 @@ export default function BarChart({ state }) {
             label: "Difficulty",
             data: state.home
               ? newArray.map((assignment) => assignment.averageDifficulty)
-              : newerArray.map((assignment) => assignment.difficulty),
+              : newerArray.map((assignment) => assignment.averageDifficulty),
             backgroundColor: "darkred",
           }
         : "",
@@ -68,7 +72,7 @@ export default function BarChart({ state }) {
             label: "Fun",
             data: state.home
               ? newArray.map((assignment) => assignment.averageFun)
-              : newerArray.map((assignment) => assignment.fun),
+              : newerArray.map((assignment) => assignment.averageFun),
             backgroundColor: "green",
           }
         : "",

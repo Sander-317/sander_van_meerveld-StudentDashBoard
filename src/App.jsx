@@ -11,6 +11,7 @@ function App({
   makeListOfAverage,
   reset,
   changeIsChecked,
+  getArrayOfAverage,
 }) {
   return (
     <div className="App">
@@ -27,6 +28,7 @@ function App({
               epicStudentListMaker={epicStudentListMaker}
               makeListOfAverage={makeListOfAverage}
               changeIsChecked={changeIsChecked}
+              getArrayOfAverage={getArrayOfAverage}
             />
           }
         ></Route>
@@ -38,6 +40,8 @@ function App({
               addArrayToCustomArray={addArrayToCustomArray}
               toggleState={toggleState}
               reset={reset}
+              changeIsChecked={changeIsChecked}
+              getArrayOfAverage={getArrayOfAverage}
             />
           }
         ></Route>

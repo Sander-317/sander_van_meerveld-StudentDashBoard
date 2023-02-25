@@ -10,12 +10,18 @@ export default function Student({
   addArrayToCustomArray,
   toggleState,
   reset,
+  changeIsChecked,
+  getArrayOfAverage,
 }) {
   return (
     <div>
       {" "}
       <CheckBoxes state={state} toggleState={toggleState} reset={reset} />
-      {state.barChart ? <BarChart state={state} /> : ""}
+      {state.barChart ? (
+        <BarChart state={state} getArrayOfAverage={getArrayOfAverage} />
+      ) : (
+        ""
+      )}
       {state.lineChart ? <LineChart state={state} /> : ""}
       <ul className="name-list">
         <h2>student list:</h2>
@@ -23,6 +29,7 @@ export default function Student({
         <StudentList
           state={state}
           addArrayToCustomArray={addArrayToCustomArray}
+          changeIsChecked={changeIsChecked}
         />
       </ul>
     </div>

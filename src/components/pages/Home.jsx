@@ -10,11 +10,16 @@ export default function Home({
   addArrayToCustomArray,
   toggleState,
   changeIsChecked,
+  getArrayOfAverage,
 }) {
   return (
     <div>
       <CheckBoxes state={state} toggleState={toggleState} />
-      {state.barChart ? <BarChart state={state} /> : ""}
+      {state.barChart ? (
+        <BarChart state={state} getArrayOfAverage={getArrayOfAverage} />
+      ) : (
+        ""
+      )}
       {state.lineChart ? <LineChart state={state} /> : ""}
 
       <ul className="name-list">

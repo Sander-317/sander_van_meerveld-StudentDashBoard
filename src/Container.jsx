@@ -24,6 +24,7 @@ export default class Container extends Component {
     this.toggleState = this.toggleState.bind(this);
     this.reset = this.reset.bind(this);
     this.changeIsChecked = this.changeIsChecked.bind(this);
+    this.getArrayOfAverage = this.getArrayOfAverage.bind(this);
     // this.makeListOfAverage = this.makeListOfAverage.bind(this);
     // this.epicStudentListMaker = this.epicStudentListMaker.bind(this);
     // this.makeListAssignments = this.makeListAssignments.bind(this);
@@ -125,6 +126,41 @@ export default class Container extends Component {
     // return newArray;
   }
 
+  getArrayOfAverage(array) {
+    const assignments = this.listMaker("assignment");
+    console.log("array of average", array);
+    if (array.length < 60) {
+      return array;
+    } else {
+      const newArray = [];
+      assignments.map((assignment) => {
+        const filteredList = array.filter(
+          (student) => student.assignment === assignment
+        );
+
+        const averageDifficulty =
+          filteredList.reduce(
+            (total, difficulty) => total + difficulty.difficulty,
+            0
+          ) / filteredList.length;
+
+        const averageFun =
+          filteredList.reduce((total, fun) => total + fun.fun, 0) /
+          filteredList.length;
+
+        return newArray.push({
+          assignment: assignment,
+          averageDifficulty: averageDifficulty,
+          averageFun: averageFun,
+        });
+      });
+      // const newState = this.state;
+      // newState.ListAllStudentAverage = newArray;
+      console.log("new array", newArray);
+      return newArray;
+    }
+  }
+
   addArrayToCustomArray = (id) => {
     console.log("addArrayToCustomArray id =", id);
     const student = this.state.studentList.filter(
@@ -174,6 +210,7 @@ export default class Container extends Component {
           makeListOfAverage={this.makeListOfAverage}
           reset={this.reset}
           changeIsChecked={this.changeIsChecked}
+          getArrayOfAverage={this.getArrayOfAverage}
         />
       </div>
     );
