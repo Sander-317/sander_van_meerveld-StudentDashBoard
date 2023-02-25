@@ -47,13 +47,13 @@ export default function BarChart({ state, getArrayOfAverage }) {
   };
 
   // const newArray = state.ListAllStudentAverage;
-  const newArray = getArrayOfAverage(state.data);
-  const newerArray = getArrayOfAverage(state.customDataList);
+  const allStudentArray = getArrayOfAverage(state.data);
+  const customArray = getArrayOfAverage(state.customDataList);
   // const newerArray = state.customDataList;
 
   // getArrayOfAverage(state.customDataList);
 
-  const labels = newArray.map((assignment) => assignment.assignment);
+  const labels = allStudentArray.map((assignment) => assignment.assignment);
 
   const chartData = {
     labels,
@@ -62,8 +62,10 @@ export default function BarChart({ state, getArrayOfAverage }) {
         ? {
             label: "Difficulty",
             data: state.home
-              ? newArray.map((assignment) => assignment.averageDifficulty)
-              : newerArray.map((assignment) => assignment.averageDifficulty),
+              ? allStudentArray.map(
+                  (assignment) => assignment.averageDifficulty
+                )
+              : customArray.map((assignment) => assignment.averageDifficulty),
             backgroundColor: "darkred",
           }
         : "",
@@ -71,8 +73,8 @@ export default function BarChart({ state, getArrayOfAverage }) {
         ? {
             label: "Fun",
             data: state.home
-              ? newArray.map((assignment) => assignment.averageFun)
-              : newerArray.map((assignment) => assignment.averageFun),
+              ? allStudentArray.map((assignment) => assignment.averageFun)
+              : customArray.map((assignment) => assignment.averageFun),
             backgroundColor: "green",
           }
         : "",
