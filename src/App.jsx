@@ -8,7 +8,7 @@ function App({
   addArrayToCustomArray,
   toggleState,
   epicStudentListMaker,
-  makeListOfAverage,
+
   reset,
   changeIsChecked,
   getArrayOfAverage,
@@ -26,7 +26,6 @@ function App({
               addArrayToCustomArray={addArrayToCustomArray}
               toggleState={toggleState}
               epicStudentListMaker={epicStudentListMaker}
-              makeListOfAverage={makeListOfAverage}
               changeIsChecked={changeIsChecked}
               getArrayOfAverage={getArrayOfAverage}
               reset={reset}

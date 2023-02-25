@@ -89,35 +89,6 @@ export default class Container extends Component {
     newState.studentList = epicStudentList;
   }
 
-  makeListOfAverage() {
-    const assignments = this.listMaker("assignment");
-
-    const newArray = [];
-    assignments.map((assignment) => {
-      const filteredList = this.state.data.filter(
-        (student) => student.assignment === assignment
-      );
-
-      const averageDifficulty =
-        filteredList.reduce(
-          (total, difficulty) => total + difficulty.difficulty,
-          0
-        ) / filteredList.length;
-
-      const averageFun =
-        filteredList.reduce((total, difficulty) => total + difficulty.fun, 0) /
-        filteredList.length;
-
-      return newArray.push({
-        assignment: assignment,
-        averageDifficulty: averageDifficulty,
-        averageFun: averageFun,
-      });
-    });
-    const newState = this.state;
-    newState.ListAllStudentAverage = newArray;
-  }
-
   getArrayOfAverage(array) {
     const assignments = this.listMaker("assignment");
 
@@ -197,7 +168,6 @@ export default class Container extends Component {
           addArrayToCustomArray={this.addArrayToCustomArray}
           toggleState={this.toggleState}
           epicStudentListMaker={this.epicStudentListMaker}
-          makeListOfAverage={this.makeListOfAverage}
           reset={this.reset}
           changeIsChecked={this.changeIsChecked}
           getArrayOfAverage={this.getArrayOfAverage}
