@@ -9,19 +9,14 @@ export default function StudentLinkList({
 }) {
   const nameList = state.studentList;
   const navigate = useNavigate();
-  //   console.log("togglestate", toggleState);
-  //   console.log(nameList);
+
   function onLinkPress(e) {
     e.preventDefault();
-    // console.log(e.target.value);
-    // const newArray = state.studentList.filter(
-    //   (student) => String(student.id) === String(e.target.value)
-    // );
+
     changeIsChecked(e.target.value);
     addArrayToCustomArray(e.target.value);
     toggleState("home");
-    // addArrayToCustomArray(newArray[0].assignments);
-    // console.log(newArray[0].assignments);
+
     navigate("./" + e.target.value);
   }
 
@@ -31,7 +26,6 @@ export default function StudentLinkList({
       key={index}
       value={student.id}
       onClick={onLinkPress}
-      //   onClick={() => navigate("./" + student.id)}
     >
       {student.name}
     </li>

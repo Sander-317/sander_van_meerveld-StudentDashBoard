@@ -25,10 +25,6 @@ export default class Container extends Component {
     this.reset = this.reset.bind(this);
     this.changeIsChecked = this.changeIsChecked.bind(this);
     this.getArrayOfAverage = this.getArrayOfAverage.bind(this);
-    // this.makeListOfAverage = this.makeListOfAverage.bind(this);
-    // this.epicStudentListMaker = this.epicStudentListMaker.bind(this);
-    // this.makeListAssignments = this.makeListAssignments.bind(this);
-    // this.studentListMaker = this.studentListMaker.bind(this);
   }
 
   toggleState = (e) => {
@@ -75,7 +71,6 @@ export default class Container extends Component {
 
   epicStudentListMaker() {
     const studentList = this.listMaker("name");
-    // const studentList = this.studentListMaker();
 
     const epicStudentList = studentList.map((student, index) => {
       const studentName = student;
@@ -88,23 +83,21 @@ export default class Container extends Component {
         ),
       };
     });
-    // console.log(epicStudentList);
+
     const newState = this.state;
-    // console.log(newState);
+
     newState.studentList = epicStudentList;
-    // return epicStudentList;
   }
 
   makeListOfAverage() {
     const assignments = this.listMaker("assignment");
 
-    // console.log(assignments);
     const newArray = [];
     assignments.map((assignment) => {
       const filteredList = this.state.data.filter(
         (student) => student.assignment === assignment
       );
-      // console.log(filteredList);
+
       const averageDifficulty =
         filteredList.reduce(
           (total, difficulty) => total + difficulty.difficulty,
@@ -114,7 +107,7 @@ export default class Container extends Component {
       const averageFun =
         filteredList.reduce((total, difficulty) => total + difficulty.fun, 0) /
         filteredList.length;
-      // console.log(average);
+
       return newArray.push({
         assignment: assignment,
         averageDifficulty: averageDifficulty,
@@ -123,12 +116,11 @@ export default class Container extends Component {
     });
     const newState = this.state;
     newState.ListAllStudentAverage = newArray;
-    // return newArray;
   }
 
   getArrayOfAverage(array) {
     const assignments = this.listMaker("assignment");
-    console.log("array of average", array);
+
     if (array.length < 60) {
       const newArray = [];
       array.map((item) => {
@@ -162,28 +154,25 @@ export default class Container extends Component {
           averageFun: averageFun,
         });
       });
-      // const newState = this.state;
-      // newState.ListAllStudentAverage = newArray;
-      console.log("new array", newArray);
+
       return newArray;
     }
   }
 
   addArrayToCustomArray = (id) => {
-    console.log("addArrayToCustomArray id =", id);
     const student = this.state.studentList.filter(
       (student) => String(student.id) === String(id)
     );
-    console.log("addArrayToCustomArray student =", student);
+
     const oldArray = this.state.customDataList;
-    // console.log("oldArray =", oldArray);
+
     const studentArray = student[0].assignments;
-    // console.log("studentArray =", studentArray);
+
     const newArray = oldArray.concat(studentArray);
-    // console.log("newArray =", newArray);
+
     const namesList = this.state.customDataNamesList;
     namesList.push(student[0].name);
-    console.log(namesList);
+
     this.setState({ customDataNamesList: namesList });
     this.setState({ customDataList: newArray });
   };
@@ -193,23 +182,16 @@ export default class Container extends Component {
   }
 
   changeIsChecked(id) {
-    console.log("id", id);
-    // this.state.studentList[id].isChecked = true;
     this.setState({
       studentList: (this.state.studentList[id].isChecked = true),
     });
-
-    console.log(this.state.studentList[id]);
   }
 
   render() {
     return (
       <div>
         {this.epicStudentListMaker()}
-        {/* {this.makeListOfAverage()} */}
 
-        {/* {console.log(this.studentListMaker())} */}
-        {/* {console.log(this.epicStudentListMaker())} */}
         <App
           state={this.state}
           addArrayToCustomArray={this.addArrayToCustomArray}

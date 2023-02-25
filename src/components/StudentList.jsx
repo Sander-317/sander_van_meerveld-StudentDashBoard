@@ -1,13 +1,8 @@
 import React from "react";
 
-export default function StudentList({
-  state,
-  addArrayToCustomArray,
-  changeIsChecked,
-}) {
+export default function StudentList({ state, addArrayToCustomArray }) {
   const nameList = state.studentList;
   const displayedNames = state.customDataNamesList;
-  console.log("displayed names", state.customDataNamesList);
 
   const handleChange = (id) => {
     addArrayToCustomArray(id);
@@ -15,12 +10,15 @@ export default function StudentList({
 
   const displayNameList = () => {
     const newArray = nameList.map((student, index) => {
-      console.log(displayedNames.includes(student.name));
       const test = false;
       if (displayedNames.includes(student.name))
         return (
           <li className={"name-list-name"} key={index}>
-            <input type="checkbox" checked={true}></input>
+            <input
+              type="checkbox"
+              checked={true}
+              onChange={() => console.log("use reset")}
+            ></input>
             {student.name}
           </li>
         );

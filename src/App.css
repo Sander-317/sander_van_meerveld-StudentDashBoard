@@ -23,7 +23,6 @@
 }
 
 .name-list-name:hover {
-  /* color: darkgreen; */
   background-color: darkgreen;
   cursor: pointer;
 }

@@ -28,7 +28,7 @@ export default function Student({
         ""
       )}
       <ul className="name-list">
-        <h2>student list:</h2>
+        <h2>add student data:</h2>
 
         <StudentList
           state={state}
