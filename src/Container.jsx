@@ -14,7 +14,6 @@ export default class Container extends Component {
       showFun: true,
       showDifficulty: true,
       test: "state works",
-
       studentList: [],
       customDataNamesList: [],
       customDataList: [],
@@ -23,7 +22,7 @@ export default class Container extends Component {
     this.addArrayToCustomArray = this.addArrayToCustomArray.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.reset = this.reset.bind(this);
-    this.changeIsChecked = this.changeIsChecked.bind(this);
+    // this.changeIsChecked = this.changeIsChecked.bind(this);
     this.getArrayOfAverage = this.getArrayOfAverage.bind(this);
   }
 
@@ -62,36 +61,32 @@ export default class Container extends Component {
         );
         const assignmentList = [...new Set(assignmentArray)];
         return assignmentList;
-
         break;
       default:
         console.log(e);
     }
   };
 
-  epicStudentListMaker() {
-    const studentList = this.listMaker("name");
+  studentListMaker() {
+    const studentNames = this.listMaker("name");
 
-    const epicStudentList = studentList.map((student, index) => {
+    const studentList = studentNames.map((student, index) => {
       const studentName = student;
       return {
         id: index,
         name: student,
-        isChecked: false,
+
         assignments: this.state.data.filter(
           (student) => student.name === studentName
         ),
       };
     });
-
     const newState = this.state;
-
-    newState.studentList = epicStudentList;
+    newState.studentList = studentList;
   }
 
   getArrayOfAverage(array) {
     const assignments = this.listMaker("assignment");
-
     if (array.length < 60) {
       const newArray = [];
       array.map((item) => {
@@ -125,7 +120,6 @@ export default class Container extends Component {
           averageFun: averageFun,
         });
       });
-
       return newArray;
     }
   }
@@ -134,42 +128,36 @@ export default class Container extends Component {
     const student = this.state.studentList.filter(
       (student) => String(student.id) === String(id)
     );
-
     const oldArray = this.state.customDataList;
-
     const studentArray = student[0].assignments;
-
     const newArray = oldArray.concat(studentArray);
-
     const namesList = this.state.customDataNamesList;
     namesList.push(student[0].name);
-
     this.setState({ customDataNamesList: namesList });
     this.setState({ customDataList: newArray });
   };
+
   reset() {
     this.setState({ customDataList: [] });
     this.setState({ customDataNamesList: [] });
   }
 
-  changeIsChecked(id) {
-    this.setState({
-      studentList: (this.state.studentList[id].isChecked = true),
-    });
-  }
+  // changeIsChecked(id) {
+  //   this.setState({
+  //     studentList: (this.state.studentList[id].isChecked = true),
+  //   });
+  // }
 
   render() {
     return (
       <div>
-        {this.epicStudentListMaker()}
+        {this.studentListMaker()}
 
         <App
           state={this.state}
           addArrayToCustomArray={this.addArrayToCustomArray}
           toggleState={this.toggleState}
-          epicStudentListMaker={this.epicStudentListMaker}
           reset={this.reset}
-          changeIsChecked={this.changeIsChecked}
           getArrayOfAverage={this.getArrayOfAverage}
         />
       </div>

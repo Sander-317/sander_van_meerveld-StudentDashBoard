@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import BarChart from "../BarChart";
 import CheckBoxes from "../CheckBoxes";
 import LineChart from "../LineChart";
@@ -9,7 +8,7 @@ export default function Home({
   state,
   addArrayToCustomArray,
   toggleState,
-  changeIsChecked,
+
   getArrayOfAverage,
   reset,
 }) {
@@ -33,7 +32,6 @@ export default function Home({
           state={state}
           addArrayToCustomArray={addArrayToCustomArray}
           toggleState={toggleState}
-          changeIsChecked={changeIsChecked}
         />
       </ul>
     </div>

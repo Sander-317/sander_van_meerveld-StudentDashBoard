@@ -5,7 +5,6 @@ export default function StudentLinkList({
   state,
   addArrayToCustomArray,
   toggleState,
-  changeIsChecked,
 }) {
   const nameList = state.studentList;
   const navigate = useNavigate();
@@ -13,7 +12,6 @@ export default function StudentLinkList({
   function onLinkPress(e) {
     e.preventDefault();
 
-    changeIsChecked(e.target.value);
     addArrayToCustomArray(e.target.value);
     toggleState("home");
 

@@ -7,10 +7,9 @@ function App({
   state,
   addArrayToCustomArray,
   toggleState,
-  epicStudentListMaker,
 
   reset,
-  changeIsChecked,
+
   getArrayOfAverage,
 }) {
   return (
@@ -25,8 +24,6 @@ function App({
               state={state}
               addArrayToCustomArray={addArrayToCustomArray}
               toggleState={toggleState}
-              epicStudentListMaker={epicStudentListMaker}
-              changeIsChecked={changeIsChecked}
               getArrayOfAverage={getArrayOfAverage}
               reset={reset}
             />
@@ -40,7 +37,6 @@ function App({
               addArrayToCustomArray={addArrayToCustomArray}
               toggleState={toggleState}
               reset={reset}
-              changeIsChecked={changeIsChecked}
               getArrayOfAverage={getArrayOfAverage}
             />
           }
