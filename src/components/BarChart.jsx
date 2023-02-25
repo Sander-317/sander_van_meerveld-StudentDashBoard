@@ -9,8 +9,6 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import data from "../assets/data";
-import { useParams } from "react-router-dom";
 
 ChartJS.register(
   CategoryScale,

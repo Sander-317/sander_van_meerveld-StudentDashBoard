@@ -4,10 +4,6 @@ export default function StudentList({ state, addArrayToCustomArray }) {
   const nameList = state.studentList;
   const displayedNames = state.customDataNamesList;
 
-  const handleChange = (id) => {
-    addArrayToCustomArray(id);
-  };
-
   const displayNameList = () => {
     const newArray = nameList.map((student, index) => {
       const test = false;
@@ -27,7 +23,7 @@ export default function StudentList({ state, addArrayToCustomArray }) {
           <li className={"name-list-name"} key={index}>
             <input
               type="checkbox"
-              onChange={() => handleChange(student.id)}
+              onChange={() => addArrayToCustomArray(student.id)}
             ></input>
             {student.name}
           </li>

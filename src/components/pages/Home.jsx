@@ -8,7 +8,6 @@ export default function Home({
   state,
   addArrayToCustomArray,
   toggleState,
-
   getArrayOfAverage,
   reset,
 }) {
@@ -25,7 +24,6 @@ export default function Home({
       ) : (
         ""
       )}
-
       <ul className="name-list">
         <h2>student list:</h2>
         <StudentLinkList

@@ -7,14 +7,12 @@ function App({
   state,
   addArrayToCustomArray,
   toggleState,
-
   reset,
-
   getArrayOfAverage,
 }) {
   return (
     <div className="App">
-      <h1>student dashboard {state.test}</h1>
+      <h1>student dashboard</h1>
 
       <Routes>
         <Route

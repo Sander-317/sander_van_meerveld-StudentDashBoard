@@ -44,6 +44,7 @@ export default function LineChart({ state, getArrayOfAverage }) {
       },
     },
   };
+
   const allStudentArray = getArrayOfAverage(state.data);
   const customArray = getArrayOfAverage(state.customDataList);
   const labels = allStudentArray.map((assignment) => assignment.assignment);

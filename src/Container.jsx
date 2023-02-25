@@ -1,5 +1,4 @@
 import React, { Component, setState } from "react";
-import { useParams } from "react-router-dom";
 import App from "./App";
 import data from "./assets/data";
 
@@ -13,7 +12,6 @@ export default class Container extends Component {
       lineChart: true,
       showFun: true,
       showDifficulty: true,
-      test: "state works",
       studentList: [],
       customDataNamesList: [],
       customDataList: [],
@@ -22,7 +20,6 @@ export default class Container extends Component {
     this.addArrayToCustomArray = this.addArrayToCustomArray.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.reset = this.reset.bind(this);
-    // this.changeIsChecked = this.changeIsChecked.bind(this);
     this.getArrayOfAverage = this.getArrayOfAverage.bind(this);
   }
 
@@ -59,8 +56,8 @@ export default class Container extends Component {
         const assignmentArray = this.state.data.map(
           (student) => student.assignment
         );
-        const assignmentList = [...new Set(assignmentArray)];
-        return assignmentList;
+        const assignmentArrayNoDuplicates = [...new Set(assignmentArray)];
+        return assignmentArrayNoDuplicates;
         break;
       default:
         console.log(e);
@@ -69,13 +66,11 @@ export default class Container extends Component {
 
   studentListMaker() {
     const studentNames = this.listMaker("name");
-
     const studentList = studentNames.map((student, index) => {
       const studentName = student;
       return {
         id: index,
         name: student,
-
         assignments: this.state.data.filter(
           (student) => student.name === studentName
         ),
@@ -128,9 +123,9 @@ export default class Container extends Component {
     const student = this.state.studentList.filter(
       (student) => String(student.id) === String(id)
     );
-    const oldArray = this.state.customDataList;
-    const studentArray = student[0].assignments;
-    const newArray = oldArray.concat(studentArray);
+    const currentArray = this.state.customDataList;
+    const newStudent = student[0].assignments;
+    const newArray = currentArray.concat(newStudent);
     const namesList = this.state.customDataNamesList;
     namesList.push(student[0].name);
     this.setState({ customDataNamesList: namesList });
@@ -142,17 +137,10 @@ export default class Container extends Component {
     this.setState({ customDataNamesList: [] });
   }
 
-  // changeIsChecked(id) {
-  //   this.setState({
-  //     studentList: (this.state.studentList[id].isChecked = true),
-  //   });
-  // }
-
   render() {
     return (
       <div>
         {this.studentListMaker()}
-
         <App
           state={this.state}
           addArrayToCustomArray={this.addArrayToCustomArray}

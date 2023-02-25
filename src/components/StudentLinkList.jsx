@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function StudentLinkList({
   state,
@@ -11,10 +11,8 @@ export default function StudentLinkList({
 
   function onLinkPress(e) {
     e.preventDefault();
-
     addArrayToCustomArray(e.target.value);
     toggleState("home");
-
     navigate("./" + e.target.value);
   }
 
