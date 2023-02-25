@@ -11,10 +11,11 @@ export default function Home({
   toggleState,
   changeIsChecked,
   getArrayOfAverage,
+  reset,
 }) {
   return (
     <div>
-      <CheckBoxes state={state} toggleState={toggleState} />
+      <CheckBoxes state={state} toggleState={toggleState} reset={reset} />
       {state.barChart ? (
         <BarChart state={state} getArrayOfAverage={getArrayOfAverage} />
       ) : (

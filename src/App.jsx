@@ -29,6 +29,7 @@ function App({
               makeListOfAverage={makeListOfAverage}
               changeIsChecked={changeIsChecked}
               getArrayOfAverage={getArrayOfAverage}
+              reset={reset}
             />
           }
         ></Route>
