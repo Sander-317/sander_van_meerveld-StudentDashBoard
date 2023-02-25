@@ -29,7 +29,7 @@ export default function Student({
       )}
       <ul className="name-list">
         <h2>add student data:</h2>
-
+        <button onClick={() => reset()}> reset data</button>
         <StudentList
           state={state}
           addArrayToCustomArray={addArrayToCustomArray}
